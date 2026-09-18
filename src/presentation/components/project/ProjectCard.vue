@@ -45,7 +45,7 @@ const updated = computed(() => {
 
     <div class="relative flex flex-1 flex-col p-6 sm:p-8" :class="featured ? 'md:p-10' : ''">
       <div class="flex items-center gap-3">
-        <span class="inline-flex size-10 items-center justify-center rounded-xl bg-[linear-gradient(135deg,var(--from),var(--to))] text-white shadow-[0_8px_24px_-8px_var(--to)] [&_svg]:size-5">
+        <span class="inline-flex size-10 items-center justify-center rounded-xl bg-foreground/10 text-foreground ring-hair [&_svg]:size-5">
           <i-hugeicons-source-code aria-hidden="true" />
         </span>
         <div class="min-w-0">

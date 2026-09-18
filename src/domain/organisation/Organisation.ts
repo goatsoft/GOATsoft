@@ -34,7 +34,7 @@ export const ORGANISATION: Organisation = {
   tagline: 'GOATed software, built in the open.',
   headline: 'Climb to new heights',
   mission:
-    'GOATsoft designs and ships native software that respects the people who use it: private by default, fast on the hardware you already own, and published in the open so you can read every line.',
+    'GOATsoft designs and ships native macOS software that respects the people who use it: private by default, fast on your hardware, and open source with no hidden agendas.',
   location: 'Australia',
   contactEmail: 'baa@goatapp.dev',
   pillars: [

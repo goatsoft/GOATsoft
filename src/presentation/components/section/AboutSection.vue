@@ -11,7 +11,7 @@ const { reveal } = useMotionPresets()
     </div>
 
     <div class="mx-auto max-w-6xl px-6">
-      <SectionHeading eyebrow="About" title="Small team. Strong opinions. Software that respects you." :lead="organisation.mission" />
+      <SectionHeading eyebrow="About" title="Software that moves with you, wherever you climb." :lead="organisation.mission" />
 
       <div class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <motion.div
@@ -19,7 +19,7 @@ const { reveal } = useMotionPresets()
           class="glass relative overflow-hidden rounded-2xl p-6 shadow-ink"
           v-bind="reveal(0.08 * i)"
         >
-          <span class="inline-flex size-11 items-center justify-center rounded-xl bg-[linear-gradient(135deg,var(--goat-accent),var(--goat-accent2))] text-white shadow-[0_8px_24px_-8px_var(--goat-glow)] [&_svg]:size-5">
+          <span class="inline-flex size-11 items-center justify-center rounded-xl bg-foreground/10 text-foreground ring-hair [&_svg]:size-5">
             <i-hugeicons-shield-01 v-if="pillar.icon === 'shield'" aria-hidden="true" />
             <i-hugeicons-cpu v-else-if="pillar.icon === 'cpu'" aria-hidden="true" />
             <i-hugeicons-source-code v-else-if="pillar.icon === 'code'" aria-hidden="true" />
