@@ -48,7 +48,16 @@ const downloadUrl = computed(() => (props.project.download ? `${props.project.re
 
     <div class="relative flex flex-1 flex-col p-6 sm:p-8" :class="featured ? 'md:p-10' : ''">
       <div class="flex items-center gap-3">
-        <span class="inline-flex size-10 items-center justify-center rounded-xl bg-foreground/10 text-foreground ring-hair [&_svg]:size-5">
+        <span
+          v-if="project.slug === 'GOAT'"
+          class="inline-flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-foreground/5 ring-hair [&_svg]:size-8"
+        >
+          <i-gs-goat aria-hidden="true" />
+        </span>
+        <span
+          v-else
+          class="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-foreground/10 text-foreground ring-hair [&_svg]:size-5"
+        >
           <i-hugeicons-source-code aria-hidden="true" />
         </span>
         <div class="min-w-0">

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="rim" x1="86" y1="0" x2="938" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#23e8ff"/>
+      <stop offset="0.22" stop-color="#159bff"/>
+      <stop offset="0.48" stop-color="#3048ef"/>
+      <stop offset="0.75" stop-color="#9142ee"/>
+      <stop offset="1" stop-color="#ff3eea"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="105" y1="250" x2="925" y2="720" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#159cff" stop-opacity="0.96"/>
+      <stop offset="0.28" stop-color="#0751c9" stop-opacity="0.92"/>
+      <stop offset="0.50" stop-color="#111f7a" stop-opacity="0.98"/>
+      <stop offset="0.72" stop-color="#5620af" stop-opacity="0.94"/>
+      <stop offset="1" stop-color="#d02be4" stop-opacity="0.96"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="160" y1="270" x2="866" y2="690" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e9fdff" stop-opacity="0.90"/>
+      <stop offset="0.18" stop-color="#6deeff" stop-opacity="0.54"/>
+      <stop offset="0.48" stop-color="#9cb2ff" stop-opacity="0.18"/>
+      <stop offset="0.78" stop-color="#f8b5ff" stop-opacity="0.48"/>
+      <stop offset="1" stop-color="#fff0ff" stop-opacity="0.92"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="19"/>
+    </filter>
+  </defs>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M172 616 C93 570 77 448 133 358 C191 265 314 243 397 317 C466 379 474 512 493 693 C496 724 505 744 512 755 C519 744 528 724 531 693 C550 512 558 379 627 317 C710 243 833 265 891 358 C947 448 931 570 852 616"
+          stroke="url(#rim)" stroke-width="164" opacity="0.55" filter="url(#glow)"/>
+    <path d="M172 616 C93 570 77 448 133 358 C191 265 314 243 397 317 C466 379 474 512 493 693 C496 724 505 744 512 755 C519 744 528 724 531 693 C550 512 558 379 627 317 C710 243 833 265 891 358 C947 448 931 570 852 616"
+          stroke="url(#rim)" stroke-width="142"/>
+    <path d="M172 616 C93 570 77 448 133 358 C191 265 314 243 397 317 C466 379 474 512 493 693 C496 724 505 744 512 755 C519 744 528 724 531 693 C550 512 558 379 627 317 C710 243 833 265 891 358 C947 448 931 570 852 616"
+          stroke="#060a26" stroke-width="126" opacity="0.96"/>
+    <path d="M172 616 C93 570 77 448 133 358 C191 265 314 243 397 317 C466 379 474 512 493 693 C496 724 505 744 512 755 C519 744 528 724 531 693 C550 512 558 379 627 317 C710 243 833 265 891 358 C947 448 931 570 852 616"
+          stroke="url(#glass)" stroke-width="112"/>
+    <path d="M172 616 C93 570 77 448 133 358 C191 265 314 243 397 317 C466 379 474 512 493 693 C496 724 505 744 512 755 C519 744 528 724 531 693 C550 512 558 379 627 317 C710 243 833 265 891 358 C947 448 931 570 852 616"
+          stroke="url(#sheen)" stroke-width="18" opacity="0.82"/>
+    <path d="M184 593 C120 541 111 451 156 381 C207 302 307 290 371 346 M653 346 C717 290 817 302 868 381 C913 451 904 541 840 593"
+          stroke="#ffffff" stroke-width="7" opacity="0.72"/>
+  </g>
+</svg>

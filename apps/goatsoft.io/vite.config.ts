@@ -6,6 +6,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 
 /**
  * Build configuration. Layer boundaries (@see ADR 0002):
@@ -30,11 +31,13 @@ export default defineConfig(({ mode }) => {
         dirs: ['src/presentation/components'],
         deep: true,
         dts: 'src/components.d.ts',
-        resolvers: [IconsResolver({ prefix: 'i' })],
+        resolvers: [IconsResolver({ prefix: 'i', customCollections: ['gs'] })],
       }),
       Icons({
         compiler: 'vue3',
         autoInstall: false,
+        // Custom "gs" collection: brand SVGs dropped into assets/svg/icons (i-gs-<name>).
+        customCollections: { gs: FileSystemIconLoader('./src/presentation/assets/svg/icons') },
         // Hugeicons ship at a 1.5 stroke; tag them so main.css can set the weight once.
         iconCustomizer(collection, _icon, props) {
           if (collection === 'hugeicons') props.class = [props.class, 'hg'].filter(Boolean).join(' ')
