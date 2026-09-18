@@ -17,6 +17,7 @@ export function curateProjects(projects: readonly Project[], curation: readonly 
         tagline: c.tagline ?? project.tagline,
         accent: c.accent ?? project.accent,
         featured: c.featured ?? project.featured,
+        download: c.download ?? project.download,
       } satisfies Project
     })
     .filter(project => !bySlug.get(project.slug.toLowerCase())?.hidden)

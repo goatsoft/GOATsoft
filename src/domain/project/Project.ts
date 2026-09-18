@@ -18,6 +18,8 @@ export interface Project {
   readonly tagline?: string
   readonly accent?: ProjectAccent
   readonly featured?: boolean
+  /** Offer a "Download" action pointing at the latest GitHub release. */
+  readonly download?: boolean
 }
 
 export type ProjectAccent = 'blue' | 'violet' | 'indigo' | 'green'
@@ -28,6 +30,8 @@ export interface ProjectCuration {
   readonly tagline?: string
   readonly accent?: ProjectAccent
   readonly featured?: boolean
+  /** Offer a "Download" action pointing at the latest GitHub release. */
+  readonly download?: boolean
   /** Order within the showcase; lower comes first. Uncurated projects follow, by stars. */
   readonly order?: number
   /** Hide from the showcase (forks, scratch repos, the website itself). */

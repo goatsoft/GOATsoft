@@ -25,6 +25,9 @@ const updated = computed(() => {
   if (!props.project.updatedAt) return ''
   return new Intl.DateTimeFormat('en-AU', { month: 'short', year: 'numeric' }).format(new Date(props.project.updatedAt))
 })
+
+// The latest-release page; GitHub redirects it to the newest tag.
+const downloadUrl = computed(() => (props.project.download ? `${props.project.repoUrl}/releases/latest` : undefined))
 </script>
 
 <template>
@@ -62,17 +65,22 @@ const updated = computed(() => {
 
       <div class="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-6 font-mono text-xs text-muted-foreground/80">
         <span v-if="project.language" class="inline-flex items-center gap-1.5"><span class="size-2 rounded-full bg-[linear-gradient(135deg,var(--from),var(--to))]" />{{ project.language }}</span>
-        <span class="inline-flex items-center gap-1.5 [&_svg]:size-3.5"><i-hugeicons-star aria-hidden="true" />{{ project.stars }}</span>
         <span v-if="updated">Updated {{ updated }}</span>
       </div>
     </div>
 
-    <div class="relative flex gap-2 border-t border-border/60 p-4" :class="featured ? 'md:w-64 md:flex-col md:justify-end md:border-l md:border-t-0 md:p-8' : ''">
-      <Button as="a" :href="project.repoUrl" target="_blank" rel="noopener" variant="outline" size="sm" class="flex-1">
+    <div class="relative flex flex-wrap gap-2 border-t border-border/60 p-4" :class="featured ? 'md:w-64 md:flex-col md:flex-nowrap md:justify-center md:gap-3 md:border-l md:border-t-0 md:p-8' : ''">
+      <Button v-if="downloadUrl" as="a" :href="downloadUrl" target="_blank" rel="noopener" size="sm" class="flex-1 md:flex-none">
+        <i-hugeicons-download-04 /> Download
+      </Button>
+      <Button v-else-if="project.homepageUrl" as="a" :href="project.homepageUrl" target="_blank" rel="noopener" size="sm" class="flex-1 md:flex-none">
+        <i-hugeicons-arrow-up-right-01 /> Visit
+      </Button>
+      <Button v-else as="a" :href="project.repoUrl" target="_blank" rel="noopener" size="sm" class="flex-1 md:flex-none">
         <i-simple-icons-github /> Source
       </Button>
-      <Button v-if="project.homepageUrl" as="a" :href="project.homepageUrl" target="_blank" rel="noopener" size="sm" class="flex-1">
-        <i-hugeicons-arrow-up-right-01 /> Visit
+      <Button as="a" :href="project.repoUrl" target="_blank" rel="noopener" variant="outline" size="sm" class="flex-1 md:flex-none" aria-label="Star this repository on GitHub">
+        <i-hugeicons-star /> {{ project.stars }} <span class="hidden sm:inline">Star</span>
       </Button>
     </div>
   </motion.article>
