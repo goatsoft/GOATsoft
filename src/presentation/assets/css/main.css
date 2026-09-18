@@ -163,6 +163,11 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* background-clip: text paints only inside the box; give descenders (the g in
+     "heights") room so they are not cut, and cancel it in the flow with a matching
+     negative margin so layout does not shift. */
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
 }
 
 /* Brand wordmark: a blue → violet → blue gradient cycles across the text. */
