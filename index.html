@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GOATsoft | Climb to new heights</title>
+    <meta name="description" content="GOATsoft builds native, private-by-design software and publishes it in the open on GitHub." />
+    <meta property="og:title" content="GOATsoft: Climb to new heights" />
+    <meta property="og:description" content="Native, private-by-design software, built in the open." />
+    <meta property="og:image" content="brand/og.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f7fb" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0b14" />
+    <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+    <script>
+      // Apply the stored or system appearance before first paint to avoid a flash.
+      // The runtime owner of this decision is useAppearance() (@see ADR 0003).
+      (function () {
+        try {
+          var stored = localStorage.getItem('goatsoft.appearance')
+          var dark = stored === 'dark' || (stored !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+          document.documentElement.classList.toggle('dark', dark)
+        } catch (_) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
