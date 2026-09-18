@@ -15,7 +15,7 @@ domain ports. [ADR 0002]
 | Domain | `src/domain/` | Entities, value objects, ports (interfaces), pure domain services, editorial copy (`Organisation`) | Nothing outside `src/domain` |
 | Application | `src/application/` | Use cases as composables (`useX.ts`): orchestrate domain + adapters, own reactive state | domain, infrastructure |
 | Infrastructure | `src/infrastructure/` | Adapters implementing domain ports (GitHub REST, static catalogue), graphics renderers, `import.meta.env` config | domain only |
-| Presentation | `src/presentation/` | `App.vue`, components, styles. Renders what composables expose; owns no business rules | application (auto-imported), domain types |
+| Presentation | `src/presentation/` | `App.vue`, components, `assets/css`. Renders what composables expose; owns no business rules | application (auto-imported), domain types |
 
 - **Domain is framework-free.** No Vue, no DOM, no `import.meta.env`, no `fetch` in
   `src/domain`. If it needs a browser API it is an adapter, not a domain object.
@@ -45,7 +45,7 @@ domain ports. [ADR 0002]
   the module that owns them. Domain types are the source of truth; adapters map into them.
 - **Styling:** Tailwind v4 only; no `<style>` blocks unless a media-query-only fallback
   cannot be expressed as a class. Use the brand tokens (`goat-*`, `background`, `foreground`,
-  `muted`, `border`, `primary`) and the `@utility` roles in `src/presentation/styles/main.css`
+  `muted`, `border`, `primary`) and the `@utility` roles in `src/presentation/assets/css/main.css`
   (`text-eyebrow`, `text-display`, `text-section-heading`, `glass`, `ring-hair`,
   `shadow-ink`). Add an `@utility` when a token recurs. Dark mode is class-driven
   (`.dark` on `<html>`); use the `dark:` variant, never `prefers-color-scheme` in

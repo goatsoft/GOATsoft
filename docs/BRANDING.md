@@ -16,7 +16,7 @@ The site inherits the GOAT brand from goatapp.dev and adds a light appearance.
 
 The accent pair (blue to violet) is constant across appearances; only the ground and ink
 change. Light accents are nudged darker so they hold contrast on white. All tokens are
-defined once in `src/presentation/styles/main.css` and exposed to Tailwind through
+defined once in `src/presentation/assets/css/main.css` and exposed to Tailwind through
 `@theme inline`.
 
 ## Appearance

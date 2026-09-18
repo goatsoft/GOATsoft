@@ -55,7 +55,7 @@ src/
     catalogue/       StaticProjectRepository (snapshot), CURATION, CompositeProjectRepository
     graphics/        aurora shaders (WGSL + GLSL) and renderer
     config/          the only reader of import.meta.env
-  presentation/      App.vue, components (site, section, project, fx, ui), styles
+  presentation/      App.vue, components (site, section, project, fx, ui), assets/css
 ```
 
 Dependencies point inward: presentation uses application, application uses domain and
@@ -70,7 +70,7 @@ framework.
 | Which repos are featured, their taglines, order, hidden repos | `CURATION` in `src/infrastructure/catalogue/StaticProjectRepository.ts` |
 | Offline snapshot of the showcase | `SNAPSHOT` in the same file; keep it a mirror of public repos |
 | Logos and hero videos | `public/brand/*`, `public/media/*`; paths in `src/domain/brand/BrandAssets.ts` |
-| Colours, type roles, glass, keyframes | `src/presentation/styles/main.css` |
+| Colours, type roles, glass, keyframes | `src/presentation/assets/css/main.css` |
 | Section layout and animation | `src/presentation/components/section/*` |
 
 ### Replacing the placeholder assets
