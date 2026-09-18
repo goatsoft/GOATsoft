@@ -3,6 +3,19 @@
 /* Dark mode is class-driven so the system preference and a stored override share one path. @see ADR 0003 */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Self-hosted Inter (SIL OFL) is the cross-platform stand-in for SF Pro, which is
+   Apple-only and cannot be served as a webfont. Apple devices still get real SF Pro
+   from the system stack in --font-sans; everyone else gets Inter, served from our own
+   origin so there is no third-party font request.
+   @see src/presentation/assets/fonts/Inter-LICENSE.txt */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/inter-var.woff2") format("woff2");
+}
+
 /*
   GOAT brand tokens (shared with goatapp.dev, Midnight theme):
   bg #0A0B14 · surface #151726 · ink #E9ECF5 · muted #8E95A8

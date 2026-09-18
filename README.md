@@ -15,7 +15,7 @@ Rules for working in the repo are in [`AGENTS.md`](./AGENTS.md). Decisions are r
 Vue 3.5 and Vite 8 with TypeScript, Tailwind CSS v4, motion-v for animation, unplugin
 auto-imports for composables and components, unplugin-icons (Hugeicons, Simple Icons), a
 WebGPU aurora renderer with WebGL2 and CSS fallbacks, and Vitest. Static output deploys to
-GitHub Pages. No runtime dependencies beyond the GitHub REST API, which has a static fallback.
+GitHub Pages. No runtime dependencies beyond the GitHub REST API, which has a static fallback. Typography uses the Apple system font stack, so Apple devices render real SF Pro, with a self-hosted Inter (SIL OFL) fallback for everyone else and no third-party font requests.
 
 ## Local development
 
