@@ -15,3 +15,4 @@ immutable once accepted; supersede them with a new record instead of editing. Us
 | [0007](./0007-motion-v-and-reduced-motion.md) | motion-v for animation, gated on reduced motion and touch | accepted |
 | [0008](./0008-github-pages-deployment.md) | GitHub Pages deployment from Actions | accepted |
 | [0009](./0009-no-router-single-page.md) | Single page with anchors, no client router | accepted |
+| [0010](./0010-monochrome-theme-and-bundled-assets.md) | Monochrome theme, bundled brand assets, sequenced hero | accepted |

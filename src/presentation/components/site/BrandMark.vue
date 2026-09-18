@@ -1,13 +1,19 @@
 <script setup lang="ts">
-/** Logo plus wordmark, swapping assets with the appearance. */
-const { assets, organisation } = useBrand()
+/**
+ * Masthead: the combined horns-and-wordmark logo, inlined so its currentColor
+ * stroke and fill take the theme text colour. @see GOATsoft.svg
+ */
+import logoMarkup from '@/presentation/assets/svg/GOATsoft.svg?raw'
+const { organisation } = useBrand()
 withDefaults(defineProps<{ size?: 'sm' | 'md' | 'lg' }>(), { size: 'md' })
-const sizes = { sm: 'size-7', md: 'size-9', lg: 'size-12' } as const
+const heights = { sm: '[&_svg]:h-6', md: '[&_svg]:h-8', lg: '[&_svg]:h-10' } as const
 </script>
 
 <template>
-  <a href="#top" class="flex items-center gap-2.5 font-semibold tracking-tight" :aria-label="`${organisation.name} home`">
-    <img :src="assets.logo" alt="" :class="sizes[size]" class="drop-shadow-[0_4px_14px_color-mix(in_oklab,var(--goat-glow)_55%,transparent)]" />
-    <span class="text-brand font-bold tracking-tight" :class="size === 'lg' ? 'text-2xl' : size === 'sm' ? 'text-base' : 'text-lg'">{{ organisation.name }}</span>
-  </a>
+  <a
+    href="#top" :aria-label="`${organisation.name} home`"
+    class="inline-flex items-center text-foreground [&_svg]:block [&_svg]:w-auto drop-shadow-[0_4px_14px_color-mix(in_oklab,var(--goat-glow)_30%,transparent)]"
+    :class="heights[size]"
+    v-html="logoMarkup"
+  />
 </template>

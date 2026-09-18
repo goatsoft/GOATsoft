@@ -9,7 +9,7 @@ const accent = computed(() => {
   switch (props.project.accent) {
     case 'violet': return { from: 'var(--goat-accent2)', to: 'var(--goat-glow)' }
     case 'indigo': return { from: 'var(--goat-glow)', to: 'var(--goat-accent)' }
-    case 'green': return { from: '#34d399', to: 'var(--goat-accent)' }
+    case 'green': return { from: 'var(--goat-accent2)', to: 'var(--goat-accent)' }
     default: return { from: 'var(--goat-accent)', to: 'var(--goat-glow)' }
   }
 })

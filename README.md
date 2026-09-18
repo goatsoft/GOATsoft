@@ -43,7 +43,7 @@ Domain-driven layering, kept deliberately small (see [ADR 0002](./docs/adr/0002-
 src/
   domain/            pure TypeScript: entities, ports, domain services, editorial copy
     project/         Project, ProjectRepository (port), curateProjects (service)
-    brand/           Appearance rules, BrandAssets (per-appearance logo and video paths)
+    brand/           Appearance rules (monochrome theme)
     organisation/    Organisation: name, headline, mission, pillars, links
   application/       use cases as composables (auto-imported)
     useProjects      loads the showcase through the composite repository, applies curation
@@ -55,7 +55,8 @@ src/
     catalogue/       StaticProjectRepository (snapshot), CURATION, CompositeProjectRepository
     graphics/        aurora shaders (WGSL + GLSL) and renderer
     config/          the only reader of import.meta.env
-  presentation/      App.vue, components (site, section, project, fx, ui), assets/css
+  presentation/      App.vue, components (site, section, project, fx, ui)
+    assets/          bundled CSS, the inlined logo (svg/) and hero video (video/), media.ts
 ```
 
 Dependencies point inward: presentation uses application, application uses domain and
@@ -69,25 +70,27 @@ framework.
 | Headline, tagline, mission, pillars, footer links | `src/domain/organisation/Organisation.ts` |
 | Which repos are featured, their taglines, order, hidden repos | `CURATION` in `src/infrastructure/catalogue/StaticProjectRepository.ts` |
 | Offline snapshot of the showcase | `SNAPSHOT` in the same file; keep it a mirror of public repos |
-| Logos and hero videos | `public/brand/*`, `public/media/*`; paths in `src/domain/brand/BrandAssets.ts` |
-| Colours, type roles, glass, keyframes | `src/presentation/assets/css/main.css` |
+| Logo (inlined, currentColor) | `src/presentation/assets/svg/GOATsoft.svg` |
+| Hero video (webm + mp4, per appearance) | `src/presentation/assets/video/*`; mapped in `src/presentation/assets/media.ts` |
+| Colours (monochrome tokens), type roles, glass, keyframes | `src/presentation/assets/css/main.css` |
+| Aurora palettes (white mist / dark clouds) | `PALETTES` in `src/infrastructure/graphics/aurora-shaders.ts` |
 | Section layout and animation | `src/presentation/components/section/*` |
 
-### Replacing the placeholder assets
+### Replacing the assets
 
-The repo ships generated placeholders so the site builds and looks right without the final
-artwork. Drop the real files in over them, same names:
+The logo and hero video are real; a light-graded hero video and the social image are still
+placeholders. Drop replacements in at these paths:
 
-| Placeholder | Replace with |
+| Asset | Where |
 | --- | --- |
-| `public/brand/logo-light.svg`, `logo-dark.svg` | The GOATsoft mark, one per appearance |
-| `public/brand/wordmark-light.svg`, `wordmark-dark.svg` | Wordmark, one per appearance |
-| `public/brand/favicon.svg`, `og.png` | Favicon and 1200x630 social image |
-| `public/media/hero-light.{mp4,webm}`, `hero-dark.{mp4,webm}` | The goat climbing to a mountain vista, one edit per appearance; loopable, muted, about 10 s, 1920x1080 or 1280x720 |
-| `public/media/hero-light-poster.jpg`, `hero-dark-poster.jpg` | A still from each video, shown before playback and under reduced motion |
+| Logo (horns + wordmark, one file, currentColor) | `src/presentation/assets/svg/GOATsoft.svg` |
+| Hero video, dark grade (webm + mp4) | `src/presentation/assets/video/ibex-climb-dark.{webm,mp4}` |
+| Hero poster (still, shown before play and under reduced motion) | `src/presentation/assets/video/ibex-climb-dark-poster.jpg` |
+| Hero video, light grade (optional) | add `ibex-climb-light.{webm,mp4}` + poster, then point `light` at them in `assets/media.ts` |
+| Favicon, 1200x630 social image | `public/brand/favicon.svg`, `public/brand/og.png` |
 
 Encode the MP4 with H.264, `yuv420p`, `+faststart`, and the WebM with VP9. Keep each under
-about 4 MB; the hero loads them with `preload="metadata"`.
+about 4 MB; the hero loads them with `preload="metadata"` and prefers the webm.
 
 ## Publication
 

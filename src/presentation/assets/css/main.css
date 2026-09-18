@@ -10,9 +10,9 @@
   GOATsoft adds a light "Summit" theme built from the same accent pair.
 */
 :root {
-  --goat-accent: #2f8fff;
-  --goat-accent2: #a63cff;
-  --goat-glow: #6f55ff;
+  --goat-accent: #14161f;
+  --goat-accent2: #3a3f52;
+  --goat-glow: #5d6478;
 
   /* Summit (light) */
   --goat-bg: #f6f7fb;
@@ -41,9 +41,9 @@
 }
 
 .dark {
-  --goat-accent: #3aa0ff;
-  --goat-accent2: #b44bff;
-  --goat-glow: #7a5cff;
+  --goat-accent: #e9ecf5;
+  --goat-accent2: #aab0c0;
+  --goat-glow: #c9ccd6;
 
   /* Midnight (dark) */
   --goat-bg: #0a0b14;

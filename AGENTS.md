@@ -49,7 +49,8 @@ domain ports. [ADR 0002]
   (`text-eyebrow`, `text-display`, `text-section-heading`, `glass`, `ring-hair`,
   `shadow-ink`). Add an `@utility` when a token recurs. Dark mode is class-driven
   (`.dark` on `<html>`); use the `dark:` variant, never `prefers-color-scheme` in
-  components. Every colour must read in both appearances. [ADR 0003]
+  components. Every colour must read in both appearances. The palette is monochrome: grayscale accent
+  tokens (near-white on dark, ink on light) and a white-mist / dark-cloud aurora. [ADR 0003, ADR 0010]
 - **Icons:** unplugin-icons over `@iconify-json/hugeicons` and `@iconify-json/simple-icons`.
   Templates use the resolved components bare (`<i-hugeicons-mountain class="size-4" />`).
   No `Icon` wrapper component and no `@iconify/vue`.
@@ -60,8 +61,11 @@ domain ports. [ADR 0002]
 - **Graphics:** the aurora background is WebGPU first, WebGL2 second, CSS last, drawn only
   while visible and at most 30 fps. New GPU work goes in `src/infrastructure/graphics` and is
   wrapped by a presentational component in `src/presentation/components/fx`. [ADR 0005]
-- **Brand assets:** paired per appearance in `src/domain/brand/BrandAssets.ts`. Replace files
-  under `public/brand` and `public/media`; keep the paths. [ADR 0004]
+- **Brand assets:** bundled by Vite under `src/presentation/assets` and resolved in the
+  presentation layer, not the domain. The logo (`assets/svg/GOATsoft.svg`) is inlined via
+  `?raw` so its `currentColor` takes the theme; the hero video (`assets/video/*`, webm then
+  mp4) is imported with `?url` in `assets/media.ts`. `public/` holds only the favicon and
+  social image. [ADR 0004, ADR 0010]
 - **Naming:** composables `useX.ts`; adapters `XRepository.ts`; components `PascalCase.vue`
   grouped by role (`site`, `section`, `project`, `fx`, `ui`); ids and anchors `kebab-case`.
 - **Comments:** purposeful only: inform usage and purpose, with a short `@see ADR NNNN` when
