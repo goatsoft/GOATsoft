@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { motion } from 'motion-v'
-const { organisation } = useBrand()
+const { organisation, appearance } = useBrand()
 const { touch, ease, reduced } = useMotionPresets()
+
+// The lower mist sits lower and fainter on light so the top of the hero stays clean.
+const isLight = computed(() => appearance.value === 'light')
+const mistIntensity = computed(() => (isLight.value ? 0.2 : touch ? 0.5 : 0.36))
 
 // The video plays first; once it is actually playing we hold for a beat (PRE_ROLL) so the
 // footage establishes, then the copy sequences in slowly. @see ADR 0010
@@ -40,9 +44,13 @@ function step(delay: number, duration = 1) {
       <HeroVideo @ready="onHeroReady" />
     </motion.div>
 
-    <!-- White mist (dark) / dark clouds (light) drifting across the lower half. -->
-    <div class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[46vh] [mask-image:linear-gradient(to_bottom,transparent,#000_60%)]" aria-hidden="true">
-      <AuroraCanvas hue="aurora" fade :intensity="touch ? 0.5 : 0.36" :scale="1.1" :speed="0.09" :seed="3" :stretch="0.45" />
+    <!-- Mist drifting across the lower half. On light it sits lower and fainter so the top stays clean. -->
+    <div
+      class="pointer-events-none absolute inset-x-0 bottom-0 -z-10"
+      :class="isLight ? 'h-[30vh] [mask-image:linear-gradient(to_bottom,transparent,#000_78%)]' : 'h-[46vh] [mask-image:linear-gradient(to_bottom,transparent,#000_60%)]'"
+      aria-hidden="true"
+    >
+      <AuroraCanvas hue="aurora" fade :intensity="mistIntensity" :scale="1.1" :speed="0.09" :seed="3" :stretch="0.45" />
     </div>
 
     <motion.div class="mx-auto w-full max-w-6xl px-6" :style="touch ? undefined : { y: copyY, opacity: copyOpacity }">
