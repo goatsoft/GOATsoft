@@ -147,6 +147,15 @@
     transition: background-color 400ms ease, color 400ms ease;
   }
   ::selection { background: color-mix(in oklab, var(--goat-accent) 35%, transparent); }
+
+  /* Rendered Markdown inside dialogs (PRIVACY.md). */
+  .doc-content > :first-child { margin-top: 0; }
+  .doc-content h1, .doc-content h2 { @apply mt-7 text-lg font-semibold tracking-tight; }
+  .doc-content h3 { @apply mt-5 text-base font-semibold tracking-tight; }
+  .doc-content p { @apply mt-3 text-sm leading-relaxed text-muted-foreground; }
+  .doc-content ul { @apply mt-3 space-y-1.5 pl-5 text-sm text-muted-foreground; list-style: disc; }
+  .doc-content a { @apply text-foreground underline underline-offset-4 hover:no-underline; }
+  .doc-content code { @apply rounded bg-foreground/10 px-1 py-0.5 font-mono text-[0.85em]; }
 }
 
 @media (hover: none), (pointer: coarse) {

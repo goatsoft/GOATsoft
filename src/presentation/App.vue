@@ -16,10 +16,10 @@ useAppearance()
           <ProjectsSection />
           <AboutSection />
           <OpenSourceSection />
-          <PrivacySection />
         </div>
       </main>
       <SiteFooter />
+      <SiteDialogs />
     </div>
   </MotionConfig>
 </template>

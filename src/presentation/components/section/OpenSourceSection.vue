@@ -30,8 +30,8 @@ const doors = [
               <Button variant="default" size="lg" as="a" :href="organisation.githubUrl" target="_blank" rel="noopener">
                 <i-simple-icons-github class="size-5" /> github.com/{{ organisation.githubHandle }}
               </Button>
-              <Button variant="glass" size="lg" as="a" :href="`mailto:${organisation.contactEmail}`" class="border-0">
-                <i-hugeicons-mail-01 /> {{ organisation.contactEmail }}
+              <Button variant="glass" size="lg" as="a" href="#contact" class="border-0">
+                <i-hugeicons-mail-01 /> Contact us
               </Button>
             </div>
           </div>

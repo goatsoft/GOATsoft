@@ -17,7 +17,7 @@ const { organisation, year } = useBrand()
           <li><a href="#about" class="hover:text-foreground">About</a></li>
           <li><a href="#open-source" class="hover:text-foreground">Open source</a></li>
           <li><a href="#privacy" class="hover:text-foreground">Privacy</a></li>
-          <li><a :href="`mailto:${organisation.contactEmail}`" class="hover:text-foreground">Contact</a></li>
+          <li><a href="#contact" class="hover:text-foreground">Contact</a></li>
         </ul>
       </div>
 
