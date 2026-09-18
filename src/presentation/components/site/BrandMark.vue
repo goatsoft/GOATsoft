@@ -6,7 +6,7 @@
 import logoMarkup from '@/presentation/assets/svg/GOATsoft.svg?raw'
 const { organisation } = useBrand()
 withDefaults(defineProps<{ size?: 'sm' | 'md' | 'lg' }>(), { size: 'md' })
-const heights = { sm: '[&_svg]:h-5', md: '[&_svg]:h-7', lg: '[&_svg]:h-9' } as const
+const heights = { sm: '[&_svg]:h-5', md: '[&_svg]:h-6', lg: '[&_svg]:h-9' } as const
 </script>
 
 <template>
