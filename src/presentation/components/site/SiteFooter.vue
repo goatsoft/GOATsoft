@@ -8,7 +8,6 @@ const { organisation, year } = useBrand()
       <div>
         <BrandMark size="sm" />
         <p class="mt-3 max-w-xs text-pretty text-sm text-muted-foreground">{{ organisation.tagline }}</p>
-        <p class="mt-4 font-mono text-xs text-muted-foreground/70">{{ organisation.location }}</p>
       </div>
 
       <div>

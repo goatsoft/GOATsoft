@@ -29,21 +29,6 @@ const { reveal } = useMotionPresets()
           <p class="mt-2 text-pretty text-sm text-muted-foreground">{{ pillar.summary }}</p>
         </motion.div>
       </div>
-
-      <motion.dl class="mt-16 grid gap-6 text-center sm:grid-cols-3" v-bind="reveal(0.2)">
-        <div class="rounded-2xl p-6 ring-hair">
-          <dt class="text-eyebrow">Based in</dt>
-          <dd class="mt-2 text-2xl font-semibold tracking-tight">{{ organisation.location }}</dd>
-        </div>
-        <div class="rounded-2xl p-6 ring-hair">
-          <dt class="text-eyebrow">Founded</dt>
-          <dd class="mt-2 text-2xl font-semibold tracking-tight">2026</dd>
-        </div>
-        <div class="rounded-2xl p-6 ring-hair">
-          <dt class="text-eyebrow">Licence</dt>
-          <dd class="mt-2 text-2xl font-semibold tracking-tight">Open source</dd>
-        </div>
-      </motion.dl>
     </div>
   </section>
 </template>
