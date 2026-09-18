@@ -33,7 +33,7 @@ const field = 'mt-1.5 w-full rounded-xl bg-foreground/5 px-3.5 py-2.5 text-sm te
     </p>
 
     <div v-if="state === 'sent'" class="mt-6 flex items-start gap-3 rounded-2xl p-4 ring-hair">
-      <span class="mt-0.5 text-foreground [&_svg]:size-5"><i-hugeicons-checkmark-circle-02 aria-hidden="true" /></span>
+      <span class="mt-0.5 text-foreground [&_svg]:size-5"><Icon name="hugeicons:checkmark-circle-02" aria-hidden="true" /></span>
       <div class="text-sm">
         <p class="font-semibold">Message sent</p>
         <p class="mt-1 text-muted-foreground">Thanks for reaching out. We will get back to you.</p>
@@ -58,7 +58,7 @@ const field = 'mt-1.5 w-full rounded-xl bg-foreground/5 px-3.5 py-2.5 text-sm te
       <p v-if="!configured" class="text-sm text-muted-foreground">The contact form is not configured yet.</p>
 
       <Button type="submit" size="lg" class="w-full" :class="state === 'sending' ? 'pointer-events-none opacity-80' : ''">
-        <i-hugeicons-sent v-if="state !== 'sending'" aria-hidden="true" />
+        <Icon name="hugeicons:sent" v-if="state !== 'sending'" aria-hidden="true" />
         {{ state === 'sending' ? 'Sending...' : 'Send message' }}
       </Button>
     </form>

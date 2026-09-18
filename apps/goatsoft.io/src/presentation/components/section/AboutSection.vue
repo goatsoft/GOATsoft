@@ -20,10 +20,10 @@ const { reveal } = useMotionPresets()
           v-bind="reveal(0.08 * i)"
         >
           <span class="inline-flex size-11 items-center justify-center rounded-xl bg-foreground/10 text-foreground ring-hair [&_svg]:size-5">
-            <i-hugeicons-shield-01 v-if="pillar.icon === 'shield'" aria-hidden="true" />
-            <i-hugeicons-cpu v-else-if="pillar.icon === 'cpu'" aria-hidden="true" />
-            <i-hugeicons-source-code v-else-if="pillar.icon === 'code'" aria-hidden="true" />
-            <i-hugeicons-mountain v-else aria-hidden="true" />
+            <Icon name="hugeicons:shield-01" v-if="pillar.icon === 'shield'" aria-hidden="true" />
+            <Icon name="hugeicons:cpu" v-else-if="pillar.icon === 'cpu'" aria-hidden="true" />
+            <Icon name="hugeicons:source-code" v-else-if="pillar.icon === 'code'" aria-hidden="true" />
+            <Icon name="hugeicons:mountain" v-else aria-hidden="true" />
           </span>
           <h3 class="mt-5 text-lg font-semibold tracking-tight">{{ pillar.title }}</h3>
           <p class="mt-2 text-pretty text-sm text-muted-foreground">{{ pillar.summary }}</p>

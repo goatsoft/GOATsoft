@@ -32,7 +32,7 @@ function onBackdrop(e: MouseEvent) { if (e.target === el.value) close() }
         class="absolute right-4 top-4 z-10 inline-flex size-9 items-center justify-center rounded-full text-muted-foreground ring-hair transition-colors hover:glass-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 [&_svg]:size-4"
         @click="close"
       >
-        <i-hugeicons-cancel-01 aria-hidden="true" />
+        <Icon name="hugeicons:cancel-01" aria-hidden="true" />
       </button>
       <slot />
     </div>

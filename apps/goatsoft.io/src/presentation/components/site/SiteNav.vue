@@ -41,10 +41,10 @@ const links = [
         <div class="flex items-center gap-1.5">
           <AppearanceToggle class="hidden sm:inline-flex" />
           <Button variant="ghost" size="icon" as="a" :href="organisation.githubUrl" target="_blank" rel="noopener" aria-label="GOATsoft on GitHub" class="hidden md:inline-flex">
-            <i-simple-icons-github />
+            <Icon name="simple-icons:github" />
           </Button>
           <Button size="sm" as="a" href="#projects" class="hidden sm:inline-flex">
-            <i-hugeicons-arrow-up-right-01 /> See our work
+            <Icon name="hugeicons:arrow-up-right-01" /> See our work
           </Button>
           <button
             ref="menuButton" type="button"
@@ -52,7 +52,7 @@ const links = [
             :aria-label="open ? 'Close menu' : 'Open menu'" :aria-expanded="open" aria-controls="mobile-navigation"
             @click="open = !open"
           >
-            <i-hugeicons-menu-01 v-if="!open" aria-hidden="true" /><i-hugeicons-cancel-01 v-else aria-hidden="true" />
+            <Icon name="hugeicons:menu-01" v-if="!open" aria-hidden="true" /><Icon name="hugeicons:cancel-01" v-else aria-hidden="true" />
           </button>
         </div>
       </nav>

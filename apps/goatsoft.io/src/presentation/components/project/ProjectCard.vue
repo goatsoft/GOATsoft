@@ -52,13 +52,13 @@ const downloadUrl = computed(() => (props.project.download ? `${props.project.re
           v-if="project.slug === 'GOAT'"
           class="inline-flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-foreground/5 ring-hair [&_svg]:size-8"
         >
-          <i-gs-goat aria-hidden="true" />
+          <Icon name="gs:goat" aria-hidden="true" />
         </span>
         <span
           v-else
           class="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-foreground/10 text-foreground ring-hair [&_svg]:size-5"
         >
-          <i-hugeicons-source-code aria-hidden="true" />
+          <Icon name="hugeicons:source-code" aria-hidden="true" />
         </span>
         <div class="min-w-0">
           <h3 class="truncate text-lg font-semibold tracking-tight" :class="featured ? 'sm:text-2xl' : ''">{{ project.name }}</h3>
@@ -80,16 +80,16 @@ const downloadUrl = computed(() => (props.project.download ? `${props.project.re
 
     <div class="relative flex flex-wrap gap-2 border-t border-border/60 p-4" :class="featured ? 'md:w-64 md:flex-col md:flex-nowrap md:justify-center md:gap-3 md:border-l md:border-t-0 md:p-8' : ''">
       <Button v-if="downloadUrl" as="a" :href="downloadUrl" target="_blank" rel="noopener" size="sm" class="flex-1 md:flex-none">
-        <i-hugeicons-download-04 /> Download
+        <Icon name="hugeicons:download-04" /> Download
       </Button>
       <Button v-else-if="project.homepageUrl" as="a" :href="project.homepageUrl" target="_blank" rel="noopener" size="sm" class="flex-1 md:flex-none">
-        <i-hugeicons-arrow-up-right-01 /> Visit
+        <Icon name="hugeicons:arrow-up-right-01" /> Visit
       </Button>
       <Button v-else as="a" :href="project.repoUrl" target="_blank" rel="noopener" size="sm" class="flex-1 md:flex-none">
-        <i-simple-icons-github /> Source
+        <Icon name="simple-icons:github" /> Source
       </Button>
       <Button as="a" :href="project.repoUrl" target="_blank" rel="noopener" variant="outline" size="sm" class="flex-1 md:flex-none" aria-label="Star this repository on GitHub">
-        <i-hugeicons-star /> {{ project.stars }} <span class="hidden sm:inline">Star</span>
+        <Icon name="hugeicons:star" /> {{ project.stars }} <span class="hidden sm:inline">Star</span>
       </Button>
     </div>
   </motion.article>

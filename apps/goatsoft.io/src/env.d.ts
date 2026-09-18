@@ -8,3 +8,9 @@ interface ImportMetaEnv {
   readonly VITE_BASE?: string
 }
 interface ImportMeta { readonly env: ImportMetaEnv }
+
+declare module '~icons/*' {
+  import type { FunctionalComponent, SVGAttributes } from 'vue'
+  const component: FunctionalComponent<SVGAttributes>
+  export default component
+}

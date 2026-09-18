@@ -28,10 +28,10 @@ const doors = [
             </p>
             <div class="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button variant="default" size="lg" as="a" :href="organisation.githubUrl" target="_blank" rel="noopener">
-                <i-simple-icons-github class="size-5" /> github.com/{{ organisation.githubHandle }}
+                <Icon name="simple-icons:github" class="size-5" /> github.com/{{ organisation.githubHandle }}
               </Button>
               <Button variant="glass" size="lg" as="a" href="#contact" class="border-0">
-                <i-hugeicons-mail-01 /> Contact us
+                <Icon name="hugeicons:mail-01" /> Contact us
               </Button>
             </div>
           </div>
@@ -43,16 +43,16 @@ const doors = [
                 class="group flex items-center gap-4 rounded-2xl p-4 ring-hair transition-colors hover:glass-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
               >
                 <span class="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary [&_svg]:size-5">
-                  <i-hugeicons-git-fork v-if="door.icon === 'repo'" aria-hidden="true" />
-                  <i-hugeicons-security-check v-else-if="door.icon === 'issue'" aria-hidden="true" />
-                  <i-hugeicons-sparkles v-else-if="door.icon === 'talk'" aria-hidden="true" />
-                  <i-hugeicons-book-open-01 v-else aria-hidden="true" />
+                  <Icon name="hugeicons:git-fork" v-if="door.icon === 'repo'" aria-hidden="true" />
+                  <Icon name="hugeicons:security-check" v-else-if="door.icon === 'issue'" aria-hidden="true" />
+                  <Icon name="hugeicons:sparkles" v-else-if="door.icon === 'talk'" aria-hidden="true" />
+                  <Icon name="hugeicons:book-open-01" v-else aria-hidden="true" />
                 </span>
                 <span class="min-w-0 flex-1">
                   <span class="block font-semibold">{{ door.label }}</span>
                   <span class="block text-sm text-muted-foreground">{{ door.detail }}</span>
                 </span>
-                <i-hugeicons-arrow-up-right-01 class="size-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" aria-hidden="true" />
+                <Icon name="hugeicons:arrow-up-right-01" class="size-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" aria-hidden="true" />
               </a>
             </motion.li>
           </ul>

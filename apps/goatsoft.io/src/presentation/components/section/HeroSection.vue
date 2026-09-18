@@ -74,10 +74,10 @@ function step(delay: number, duration = 1) {
 
       <motion.div class="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center" v-bind="step(1.75, 0.8)">
         <Button variant="default" size="xl" as="a" href="#projects">
-          <i-hugeicons-mountain /> See our work
+          <Icon name="hugeicons:mountain" /> See our work
         </Button>
         <Button variant="glass" size="xl" as="a" :href="organisation.githubUrl" target="_blank" rel="noopener" class="border-0">
-          <i-simple-icons-github class="size-5" /> GitHub
+          <Icon name="simple-icons:github" class="size-5" /> GitHub
         </Button>
       </motion.div>
     </motion.div>

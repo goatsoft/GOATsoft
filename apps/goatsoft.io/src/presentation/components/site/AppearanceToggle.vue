@@ -64,9 +64,9 @@ const grow = (i: number) => ({
       :class="preference === o.value ? 'text-foreground bg-primary/15 ring-hair' : 'text-muted-foreground hover:text-foreground'"
       @click="choose(o.value)"
     >
-      <i-hugeicons-computer v-if="o.value === 'system'" aria-hidden="true" />
-      <i-hugeicons-sun-03 v-else-if="o.value === 'light'" aria-hidden="true" />
-      <i-hugeicons-moon-02 v-else aria-hidden="true" />
+      <Icon name="hugeicons:computer" v-if="o.value === 'system'" aria-hidden="true" />
+      <Icon name="hugeicons:sun-03" v-else-if="o.value === 'light'" aria-hidden="true" />
+      <Icon name="hugeicons:moon-02" v-else aria-hidden="true" />
       <span class="relative">{{ o.label }}</span>
     </button>
   </div>
@@ -88,9 +88,9 @@ const grow = (i: number) => ({
           v-bind="grow(i)"
           @click="choose(o.value)"
         >
-          <i-hugeicons-computer v-if="o.value === 'system'" aria-hidden="true" />
-          <i-hugeicons-sun-03 v-else-if="o.value === 'light'" aria-hidden="true" />
-          <i-hugeicons-moon-02 v-else aria-hidden="true" />
+          <Icon name="hugeicons:computer" v-if="o.value === 'system'" aria-hidden="true" />
+          <Icon name="hugeicons:sun-03" v-else-if="o.value === 'light'" aria-hidden="true" />
+          <Icon name="hugeicons:moon-02" v-else aria-hidden="true" />
         </motion.button>
       </AnimatePresence>
 
@@ -101,9 +101,9 @@ const grow = (i: number) => ({
         :aria-label="`Appearance: ${current.label}. Change appearance`" aria-haspopup="true" :aria-expanded="open"
         @click.stop="open = !open"
       >
-        <i-hugeicons-computer v-if="current.value === 'system'" aria-hidden="true" />
-        <i-hugeicons-sun-03 v-else-if="current.value === 'light'" aria-hidden="true" />
-        <i-hugeicons-moon-02 v-else aria-hidden="true" />
+        <Icon name="hugeicons:computer" v-if="current.value === 'system'" aria-hidden="true" />
+        <Icon name="hugeicons:sun-03" v-else-if="current.value === 'light'" aria-hidden="true" />
+        <Icon name="hugeicons:moon-02" v-else aria-hidden="true" />
       </button>
     </motion.div>
   </div>
