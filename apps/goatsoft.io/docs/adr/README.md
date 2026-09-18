@@ -18,3 +18,4 @@ immutable once accepted; supersede them with a new record instead of editing. Us
 | [0010](./0010-monochrome-theme-and-bundled-assets.md) | Monochrome theme, bundled brand assets, sequenced hero | accepted |
 | [0011](./0011-contact-form-validation-zod-regle.md) | Contact form validation with Zod and Regle | accepted |
 | [0012](./0012-publish-to-dedicated-pages-repo.md) | Publish the built site to a dedicated Pages repo | accepted |
+| [0013](./0013-showcase-repository-allowlist.md) | Showcase shows an explicit repository allowlist | accepted |
