@@ -39,7 +39,7 @@ onMounted(() => {
 <template>
   <div class="absolute inset-0 -z-20 overflow-hidden" aria-hidden="true">
     <img
-      :src="sources.poster" alt="" fetchpriority="high" decoding="async"
+      :src="sources.poster" alt="" fetchpriority="high" decoding="async" :style="{ filter: 'var(--hero-video-filter)' }"
       class="absolute inset-0 size-full object-cover transition-opacity duration-1000"
       :class="ready ? 'opacity-0' : 'opacity-100'"
     />
@@ -48,7 +48,7 @@ onMounted(() => {
       :key="key" ref="video"
       class="absolute inset-0 size-full object-cover transition-opacity duration-1000"
       :class="ready ? 'opacity-100' : 'opacity-0'"
-      :poster="sources.poster"
+      :poster="sources.poster" :style="{ filter: 'var(--hero-video-filter)' }"
       autoplay muted playsinline disablepictureinpicture preload="metadata"
       @canplay="onCanPlay" @playing="fireReady"
     >

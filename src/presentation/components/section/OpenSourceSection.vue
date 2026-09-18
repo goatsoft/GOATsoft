@@ -27,7 +27,7 @@ const doors = [
               Code, decisions and roadmaps live in public repositories under the {{ organisation.name }} organisation. Star a project, open an issue, or send a pull request: that is how things get built here.
             </p>
             <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button variant="aurora" size="lg" as="a" :href="organisation.githubUrl" target="_blank" rel="noopener">
+              <Button variant="default" size="lg" as="a" :href="organisation.githubUrl" target="_blank" rel="noopener">
                 <i-simple-icons-github class="size-5" /> github.com/{{ organisation.githubHandle }}
               </Button>
               <Button variant="glass" size="lg" as="a" :href="`mailto:${organisation.contactEmail}`" class="border-0">
