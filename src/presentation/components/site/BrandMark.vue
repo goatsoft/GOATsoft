@@ -1,12 +1,12 @@
 <script setup lang="ts">
 /**
  * Masthead: the combined horns-and-wordmark logo, inlined so its currentColor
- * stroke and fill take the theme text colour. @see GOATsoft.svg
+ * stroke and fill take the theme text colour. @see GOATsoft-logo.svg
  */
-import logoMarkup from '@/presentation/assets/svg/GOATsoft.svg?raw'
+import logoMarkup from '@/presentation/assets/svg/GOATsoft-logo.svg?raw'
 const { organisation } = useBrand()
 withDefaults(defineProps<{ size?: 'sm' | 'md' | 'lg' }>(), { size: 'md' })
-const heights = { sm: '[&_svg]:h-5', md: '[&_svg]:h-6', lg: '[&_svg]:h-9' } as const
+const heights = { sm: '[&_svg]:h-3.5', md: '[&_svg]:h-[1.125rem]', lg: '[&_svg]:h-7' } as const
 </script>
 
 <template>
