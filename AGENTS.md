@@ -98,5 +98,6 @@ domain ports. [ADR 0002]
 - Never add external scripts, fonts, analytics or embeds. The only runtime network call is
   the anonymous GitHub API request for the showcase, with a static fallback. [ADR 0006]
 - The tracked `.env` holds public values only. Never put secrets in `VITE_*` variables.
-- GitHub Pages deploys from `.github/workflows/pages.yml`; the base path is derived from the
-  repository name. [ADR 0008]
+- The site source lives in this monorepo; `.github/workflows/pages.yml` builds it and publishes
+  the built output to the `goatsoft/goatsoft.io` repo, which serves it via Pages at the custom
+  domain (so the base path is always `/`). [ADR 0012]

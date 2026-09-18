@@ -1,21 +1,16 @@
-name: Pages
+name: Publish site
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency:
-  group: pages
+  group: publish-goatsoft-io
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,21 +20,17 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # Served from the goatsoft.io custom domain, so the base path is always "/".
       - run: pnpm --filter goatsoft.io run build
         env:
           VITE_BASE: /
           VITE_SITE_URL: https://goatsoft.io/
-      - uses: actions/upload-pages-artifact@v3
+      # Source lives here (the monorepo); the built site is published to the
+      # goatsoft.io repo, which serves it via Pages. @see ADR 0008
+      - uses: peaceiris/actions-gh-pages@v4
         with:
-          path: apps/goatsoft.io/dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: goatsoft/goatsoft.io
+          publish_branch: main
+          publish_dir: apps/goatsoft.io/dist
+          cname: goatsoft.io
+          force_orphan: true

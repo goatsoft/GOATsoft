@@ -1,6 +1,6 @@
 # 0008. GitHub Pages deployment from Actions
 
-- Status: accepted
+- Status: superseded by [0012](./0012-publish-to-dedicated-pages-repo.md)
 - Date: 2026-09-18
 
 ## Context
