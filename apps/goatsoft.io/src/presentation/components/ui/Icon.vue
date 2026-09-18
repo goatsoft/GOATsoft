@@ -1,12 +1,14 @@
 <script setup lang="ts">
 /**
  * One icon component for the whole app: <Icon name="collection:icon" />.
- * Backed by unplugin-icons virtual modules, so only the icons registered here are
- * bundled (tree-shaken) and nothing is fetched at runtime. Add a brand SVG to
- * assets/svg/icons for the "gs" collection, then register it below.
+ *
+ * - "gs" brand icons are AUTO-LOADED from assets/svg/icons via import.meta.glob, so
+ *   dropping an SVG in that folder makes <Icon name="gs:<filename>" /> work with no
+ *   registration, at build and with HMR. They render in their own colours.
+ * - Utility icons (hugeicons, simple-icons) come from unplugin-icons virtual modules,
+ *   registered below from actual usage so only what is used gets bundled (tree-shaken).
  */
 import type { Component } from 'vue'
-import I_gs_goat from '~icons/gs/goat'
 import I_hugeicons_arrow_up_right_01 from '~icons/hugeicons/arrow-up-right-01'
 import I_hugeicons_book_open_01 from '~icons/hugeicons/book-open-01'
 import I_hugeicons_cancel_01 from '~icons/hugeicons/cancel-01'
@@ -28,8 +30,7 @@ import I_hugeicons_star from '~icons/hugeicons/star'
 import I_hugeicons_sun_03 from '~icons/hugeicons/sun-03'
 import I_simple_icons_github from '~icons/simple-icons/github'
 
-const registry: Record<string, Component> = {
-  'gs:goat': I_gs_goat,
+const components: Record<string, Component> = {
   'hugeicons:arrow-up-right-01': I_hugeicons_arrow_up_right_01,
   'hugeicons:book-open-01': I_hugeicons_book_open_01,
   'hugeicons:cancel-01': I_hugeicons_cancel_01,
@@ -52,10 +53,25 @@ const registry: Record<string, Component> = {
   'simple-icons:github': I_simple_icons_github,
 }
 
+// Auto-loaded brand SVGs: { "gs:goat": "<svg ...>" }. Eager so it is a plain sync map.
+const brandModules = import.meta.glob('../../assets/svg/icons/*.svg', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+}) as Record<string, string>
+const brand: Record<string, string> = {}
+for (const [filePath, svg] of Object.entries(brandModules)) {
+  const name = filePath.split('/').pop()!.replace(/\.svg$/, '')
+  brand['gs:' + name] = svg.replace(/^\uFEFF?\s*<\?xml[^>]*\?>\s*/, '')
+}
+
 const props = defineProps<{ name: string }>()
-const icon = computed(() => registry[props.name])
+const component = computed(() => components[props.name])
+const rawSvg = computed(() => brand[props.name])
 </script>
 
 <template>
-  <component :is="icon" v-if="icon" />
+  <component :is="component" v-if="component" />
+  <!-- eslint-disable-next-line vue/no-v-html -- trusted, build-time brand SVG -->
+  <span v-else-if="rawSvg" class="contents" v-html="rawSvg" />
 </template>
