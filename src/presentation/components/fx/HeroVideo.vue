@@ -12,6 +12,11 @@ const emit = defineEmits<{ ready: [] }>()
 const { appearance } = useBrand()
 const { reduced } = useMotionPresets()
 const sources = computed(() => heroVideoFor(appearance.value))
+const isLight = computed(() => appearance.value === 'light')
+// Light footage is bright, so the copy needs a stronger, wider ground on light to stay legible.
+const copyScrim = computed(() => isLight.value
+  ? 'linear-gradient(to right, color-mix(in oklab, var(--goat-bg) 97%, transparent), color-mix(in oklab, var(--goat-bg) 78%, transparent) 44%, color-mix(in oklab, var(--goat-bg) 34%, transparent) 66%, transparent 86%)'
+  : 'linear-gradient(to right, color-mix(in oklab, var(--goat-bg) 88%, transparent), color-mix(in oklab, var(--goat-bg) 45%, transparent) 42%, transparent 72%)')
 const video = ref<HTMLVideoElement | null>(null)
 const ready = ref(false)
 
@@ -55,8 +60,8 @@ onMounted(() => {
       <source :src="sources.webm" type="video/webm" />
       <source :src="sources.mp4" type="video/mp4" />
     </video>
-    <!-- Copy-side scrim: the theme ground, strong on the left so the copy reads, clearing to the footage on the right. -->
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,color-mix(in_oklab,var(--goat-bg)_88%,transparent),color-mix(in_oklab,var(--goat-bg)_45%,transparent)_42%,transparent_72%)]" />
+    <!-- Copy-side scrim: the theme ground, strong on the left so the copy reads, clearing to the footage on the right. Stronger and wider on light because the footage is brighter. -->
+    <div class="absolute inset-0" :style="{ backgroundImage: copyScrim }" />
     <!-- Gentle overall veil to unify the tone. -->
     <div class="absolute inset-0 bg-[var(--hero-veil)]" />
     <!-- Bottom fade into the page (also backs the mobile copy). -->
