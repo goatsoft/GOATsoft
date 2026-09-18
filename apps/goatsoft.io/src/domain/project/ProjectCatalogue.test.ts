@@ -32,4 +32,9 @@ describe('curateProjects', () => {
     )
     expect(list.map(p => p.slug)).toEqual(['d', 'c', 'b', 'a'])
   })
+
+  it('shows only allowlisted slugs when a shown list is given', () => {
+    const list = curateProjects([base('GOAT'), base('SwiftHosts'), base('goatherd.dev'), base('goatsoft.io')], [], ['GOAT', 'SwiftHosts'])
+    expect([...list.map(p => p.slug)].sort()).toEqual(['GOAT', 'SwiftHosts'].sort())
+  })
 })

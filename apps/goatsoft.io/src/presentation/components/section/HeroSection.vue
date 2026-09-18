@@ -62,13 +62,13 @@ function step(delay: number, duration = 1) {
         <motion.span
           v-for="(word, i) in words" :key="word"
           class="mr-[0.22em] inline-block"
-          :class="i === words.length - 1 ? 'text-aurora mr-0' : ''"
+          :class="i === words.length - 1 ? 'mr-0' : ''"
           :initial="reduced ? false : { opacity: 0, y: 44, rotateX: -35, filter: 'blur(12px)' }"
           :animate="started ? { opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)', transition: { duration: 1.05, delay: 0.35 + i * 0.16, ease } } : { opacity: 0, y: 44, rotateX: -35, filter: 'blur(12px)' }"
         >{{ word }}</motion.span>
       </h1>
 
-      <motion.p class="mt-7 max-w-2xl text-pretty text-lg text-muted-foreground sm:text-xl" v-bind="step(1.35, 0.9)">
+      <motion.p class="mt-7 max-w-2xl text-pretty text-lg text-goat-accent2 sm:text-xl" v-bind="step(1.35, 0.9)">
         {{ organisation.mission }}
       </motion.p>
 

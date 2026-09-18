@@ -24,9 +24,19 @@ export const CURATION: readonly ProjectCuration[] = [
     tagline: 'GOAT documentation',
     description: 'GOAT documentation: getting started, practical guides and technical reference. Built from goatsoft/GOAT.',
   },
+  {
+    slug: 'SwiftHosts',
+    order: 2,
+    accent: 'indigo',
+    tagline: 'Native macOS hosts file manager',
+    description: 'A modern native macOS /etc/hosts file manager, built with Swift and SwiftUI.',
+  },
   { slug: 'goatsoft.github.io', hidden: true },
   { slug: '.github', hidden: true },
 ]
+
+/** Only these repositories appear in the showcase, in this order. Everything else GitHub returns is ignored. */
+export const SHOWN: readonly string[] = ['GOAT', 'SwiftHosts']
 
 export const SNAPSHOT: readonly Project[] = [
   {
@@ -47,6 +57,15 @@ export const SNAPSHOT: readonly Project[] = [
     repoUrl: 'https://github.com/goatsoft/goatherd.dev',
     homepageUrl: 'https://goatherd.dev/',
     language: 'HTML',
+    stars: 0,
+    topics: [],
+  },
+  {
+    slug: 'SwiftHosts',
+    name: 'SwiftHosts',
+    description: 'A modern native macOS /etc/hosts file manager, built with Swift and SwiftUI.',
+    repoUrl: 'https://github.com/goatsoft/SwiftHosts',
+    language: 'Swift',
     stars: 0,
     topics: [],
   },

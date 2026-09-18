@@ -2,7 +2,7 @@ import type { Project } from '@/domain/project/Project.ts'
 import type { ProjectSource } from '@/domain/project/ProjectRepository.ts'
 import { curateProjects } from '@/domain/project/ProjectCatalogue.ts'
 import { CompositeProjectRepository } from '@/infrastructure/catalogue/CompositeProjectRepository.ts'
-import { CURATION, StaticProjectRepository } from '@/infrastructure/catalogue/StaticProjectRepository.ts'
+import { CURATION, SHOWN, StaticProjectRepository } from '@/infrastructure/catalogue/StaticProjectRepository.ts'
 import { GitHubProjectRepository } from '@/infrastructure/github/GitHubProjectRepository.ts'
 import { siteConfig } from '@/infrastructure/config/site.ts'
 
@@ -32,7 +32,7 @@ export function useProjects() {
     status.value = 'loading'
     try {
       const listing = await repository.listWithSource(controller.signal)
-      projects.value = curateProjects(listing.projects, CURATION)
+      projects.value = curateProjects(listing.projects, CURATION, SHOWN)
       source.value = listing.source
       status.value = 'ready'
     } catch (error) {
