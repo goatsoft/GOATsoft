@@ -19,24 +19,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
-      # An org site (goatsoft.github.io) deploys at "/"; a project site deploys at "/<repo>/".
-      - name: Resolve base path
-        id: base
-        run: |
-          if [[ "${GITHUB_REPOSITORY##*/}" == *.github.io ]]; then echo "base=/" >> "$GITHUB_OUTPUT"; else echo "base=/${GITHUB_REPOSITORY##*/}/" >> "$GITHUB_OUTPUT"; fi
-      # check = build (which also generates the auto-import typings) + typecheck + tests + prose.
-      - run: npm run check
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # Served from the goatsoft.io custom domain, so the base path is always "/".
+      - run: pnpm --filter goatsoft.io run build
         env:
-          VITE_BASE: ${{ steps.base.outputs.base }}
-          VITE_SITE_URL: https://${{ github.repository_owner }}.github.io${{ steps.base.outputs.base }}
+          VITE_BASE: /
+          VITE_SITE_URL: https://goatsoft.io/
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: apps/goatsoft.io/dist
 
   deploy:
     needs: build

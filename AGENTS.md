@@ -1,5 +1,7 @@
 # AGENTS.md
 
+> Monorepo: this repo is a pnpm + Turborepo workspace. The website lives in `apps/goatsoft.io` (all paths below are relative to it). Run tasks from the root with pnpm/turbo, or per package with `pnpm --filter goatsoft.io <task>`.
+
 Rules for AI agents and developers working in this repo. This file is RULES ONLY: the
 what-and-why narrative lives in [`README.md`](./README.md) and the reasoning behind each rule
 lives in [`docs/adr/`](./docs/adr/README.md). Read the README first.
