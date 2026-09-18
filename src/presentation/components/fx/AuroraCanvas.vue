@@ -29,7 +29,7 @@ const reduced = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduce
 const palette = computed<AuroraPalette>(() => props.colors ?? PALETTES[appearance.value][props.hue])
 /** Light palettes are deeper, so they need a little less alpha to read as a tint. No blend
  *  modes: Chrome composites blended GPU canvases unreliably (@see ADR 0005). */
-const lightIntensity = computed(() => (appearance.value === 'light' ? props.intensity * 0.9 : props.intensity))
+const lightIntensity = computed(() => (appearance.value === 'light' ? props.intensity * 0.55 : props.intensity))
 
 const cssFallback = computed(() => {
   const [a, b, c] = palette.value.map(v => `rgb(${v.map(x => Math.round(x * 255)).join(' ')} / ${0.28 * lightIntensity.value})`)

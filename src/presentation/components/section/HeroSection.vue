@@ -41,7 +41,7 @@ function step(delay: number, duration = 1) {
     </motion.div>
 
     <!-- White mist (dark) / dark clouds (light) drifting across the lower half. -->
-    <div class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[60vh] [mask-image:linear-gradient(to_bottom,transparent,#000_40%)]" aria-hidden="true">
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[46vh] [mask-image:linear-gradient(to_bottom,transparent,#000_60%)]" aria-hidden="true">
       <AuroraCanvas hue="aurora" fade :intensity="touch ? 0.5 : 0.36" :scale="1.1" :speed="0.09" :seed="3" :stretch="0.45" />
     </div>
 
