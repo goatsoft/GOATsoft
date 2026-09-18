@@ -5,9 +5,7 @@ const { reveal } = useMotionPresets()
 
 const doors = [
   { label: 'Repositories', detail: 'Read the source, fork it, build it.', href: organisation.githubUrl, icon: 'repo' },
-  { label: 'Issues', detail: 'Report a bug or request a feature on any project.', href: `${organisation.githubUrl}/GOAT/issues`, icon: 'issue' },
-  { label: 'Discussions', detail: 'Ask questions and share what you are building.', href: `${organisation.githubUrl}/GOAT/discussions`, icon: 'talk' },
-  { label: 'Documentation', detail: 'Guides and reference for every release.', href: 'https://goatherd.dev', icon: 'book' },
+  { label: 'Discussions', detail: 'Ask questions and share what you are building.', href: `https://github.com/orgs/${organisation.githubHandle}/discussions`, icon: 'talk' },
 ] as const
 </script>
 
@@ -44,9 +42,7 @@ const doors = [
               >
                 <span class="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary [&_svg]:size-5">
                   <Icon name="hugeicons:git-fork" v-if="door.icon === 'repo'" aria-hidden="true" />
-                  <Icon name="hugeicons:security-check" v-else-if="door.icon === 'issue'" aria-hidden="true" />
-                  <Icon name="hugeicons:sparkles" v-else-if="door.icon === 'talk'" aria-hidden="true" />
-                  <Icon name="hugeicons:book-open-01" v-else aria-hidden="true" />
+                  <Icon name="hugeicons:sparkles" v-else aria-hidden="true" />
                 </span>
                 <span class="min-w-0 flex-1">
                   <span class="block font-semibold">{{ door.label }}</span>

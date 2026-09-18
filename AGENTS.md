@@ -29,8 +29,8 @@ domain ports. [ADR 0002]
   `src/domain/organisation/Organisation.ts` and `src/infrastructure/catalogue/`. Components
   render it; they do not hard-code sentences beyond labels.
 - **Bounded contexts:** `project` (showcase), `brand` (appearance and assets),
-  `organisation` (identity and copy). Keep them in their folders; cross-context imports go
-  through types only.
+  `organisation` (identity and copy), `contact` (contact form input and validation). Keep
+  them in their folders; cross-context imports go through types only.
 - **`src/lib/`** is reserved for shadcn-vue's `cn()` helper and nothing else.
 
 ## Coding conventions
@@ -63,6 +63,10 @@ domain ports. [ADR 0002]
 - **Graphics:** the aurora background is WebGPU first, WebGL2 second, CSS last, drawn only
   while visible and at most 30 fps. New GPU work goes in `src/infrastructure/graphics` and is
   wrapped by a presentational component in `src/presentation/components/fx`. [ADR 0005]
+- **Forms:** validation rules are Zod schemas in the domain (`src/domain/<context>`), bound in
+  the application layer with Regle (`useRegleSchema` from `@regle/schemas`). Components render
+  `r$.<field>.$errors`, gate display on `$error`, and set `novalidate` so the schema is the
+  single source of truth. [ADR 0011]
 - **Brand assets:** bundled by Vite under `src/presentation/assets` and resolved in the
   presentation layer, not the domain. The logo (`assets/svg/GOATsoft.svg`) is inlined via
   `?raw` so its `currentColor` takes the theme; the hero video (`assets/video/*`, webm then

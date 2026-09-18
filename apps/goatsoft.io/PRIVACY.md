@@ -12,7 +12,7 @@ The project showcase loads public repository data from the GitHub REST API when 
 
 ## The contact form
 
-When you send a message through the contact form, it is delivered by Web3Forms, a form backend that forwards the message to us by email. Your name, email address and message are sent to Web3Forms only at the moment you submit the form, under the Web3Forms privacy policy. We use it so we do not have to run a server or publish an email address.
+When you send a message through the contact form, your name, email address and message are passed to a third-party form delivery service that forwards them to us by email, and only at the moment you press send. We use a service so we do not have to run a server or publish an email address. Submissions are kept by that service for at most 7 days and then permanently deleted.
 
 ## Hosting
 

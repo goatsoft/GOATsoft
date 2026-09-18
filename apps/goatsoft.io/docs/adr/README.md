@@ -16,3 +16,4 @@ immutable once accepted; supersede them with a new record instead of editing. Us
 | [0008](./0008-github-pages-deployment.md) | GitHub Pages deployment from Actions | accepted |
 | [0009](./0009-no-router-single-page.md) | Single page with anchors, no client router | accepted |
 | [0010](./0010-monochrome-theme-and-bundled-assets.md) | Monochrome theme, bundled brand assets, sequenced hero | accepted |
+| [0011](./0011-contact-form-validation-zod-regle.md) | Contact form validation with Zod and Regle | accepted |
