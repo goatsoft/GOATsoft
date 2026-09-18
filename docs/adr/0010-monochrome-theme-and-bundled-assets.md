@@ -18,7 +18,7 @@ palette should be grayscale, and binary brand assets (logo, hero video) now live
   `--goat-glow`) resolve to grayscale: near-white on the dark ground, ink on the light one.
   Everything downstream (primary buttons, the `text-aurora` headline, card accents, focus
   rings) is token-driven, so it turns monochrome without per-component edits. The GPU
-  aurora palettes are grayscale too: green aurora mist on dark, dark clouds on light. The `hue`
+  aurora palettes are grayscale too: white mist on dark, dark clouds on light. The `hue`
   prop stays for call-site clarity but every hue resolves to the same ramp.
 - **Bundled brand assets.** The combined logo (`assets/svg/GOATsoft.svg`) is inlined via
   `?raw` so its `currentColor` stroke and fill take the theme colour. The hero video

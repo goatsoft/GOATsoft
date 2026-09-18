@@ -106,16 +106,16 @@ void main() {
 
 export type AuroraPalette = readonly [readonly number[], readonly number[], readonly number[]]
 
-/** Green aurora mist on the dark ground; dark clouds on the light one.
+/** Monochrome palettes: white mist on the dark ground, dark clouds on the light one.
  *  The hue prop is kept for call-site clarity but every hue resolves to the same
  *  grayscale ramp so nothing reintroduces colour. @see ADR 0010 */
 export const PALETTES: Record<'light' | 'dark', Record<'aurora' | 'blue' | 'violet' | 'indigo' | 'green', AuroraPalette>> = {
   dark: {
-    aurora: [[0.24,0.82,0.55],[0.42,0.95,0.70],[0.14,0.62,0.46]],
-    blue: [[0.24,0.82,0.55],[0.42,0.95,0.70],[0.14,0.62,0.46]],
-    violet: [[0.24,0.82,0.55],[0.42,0.95,0.70],[0.14,0.62,0.46]],
-    indigo: [[0.24,0.82,0.55],[0.42,0.95,0.70],[0.14,0.62,0.46]],
-    green: [[0.24,0.82,0.55],[0.42,0.95,0.70],[0.14,0.62,0.46]],
+    aurora: [[0.86,0.88,0.93],[0.72,0.75,0.82],[0.96,0.97,1.0]],
+    blue: [[0.86,0.88,0.93],[0.72,0.75,0.82],[0.96,0.97,1.0]],
+    violet: [[0.86,0.88,0.93],[0.72,0.75,0.82],[0.96,0.97,1.0]],
+    indigo: [[0.86,0.88,0.93],[0.72,0.75,0.82],[0.96,0.97,1.0]],
+    green: [[0.86,0.88,0.93],[0.72,0.75,0.82],[0.96,0.97,1.0]],
   },
   light: {
     aurora: [[0.17,0.18,0.23],[0.30,0.32,0.38],[0.10,0.11,0.15]],

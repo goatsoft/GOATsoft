@@ -50,7 +50,7 @@ domain ports. [ADR 0002]
   `shadow-ink`). Add an `@utility` when a token recurs. Dark mode is class-driven
   (`.dark` on `<html>`); use the `dark:` variant, never `prefers-color-scheme` in
   components. Every colour must read in both appearances. The palette is monochrome: grayscale accent
-  tokens (near-white on dark, ink on light) and a green-aurora mist on dark, grayscale clouds on light. [ADR 0003, ADR 0010]
+  tokens (near-white on dark, ink on light) and a white mist on dark, grayscale clouds on light. [ADR 0003, ADR 0010]
 - **Icons:** unplugin-icons over `@iconify-json/hugeicons` and `@iconify-json/simple-icons`.
   Templates use the resolved components bare (`<i-hugeicons-mountain class="size-4" />`).
   No `Icon` wrapper component and no `@iconify/vue`.
