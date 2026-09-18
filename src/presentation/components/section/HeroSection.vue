@@ -3,9 +3,16 @@ import { motion } from 'motion-v'
 const { organisation } = useBrand()
 const { touch, ease, reduced } = useMotionPresets()
 
-// The video plays first; its `ready` event releases the copy so it sequences in after.
+// The video plays first; once it is actually playing we hold for a beat (PRE_ROLL) so the
+// footage establishes, then the copy sequences in slowly. @see ADR 0010
+const PRE_ROLL = 1100
 const started = ref(false)
-function onHeroReady() { started.value = true }
+let timer = 0
+function onHeroReady() {
+  if (started.value) return
+  timer = window.setTimeout(() => (started.value = true), reduced.value ? 0 : PRE_ROLL)
+}
+onUnmounted(() => window.clearTimeout(timer))
 
 // Parallax: the copy rises and fades a little faster than the footage behind it.
 const scrollY = touch ? useMotionValue(0) : useScroll().scrollY
@@ -15,13 +22,14 @@ const videoY = useTransform(scrollY, [0, 900], [0, 140])
 
 const words = organisation.headline.split(' ')
 
-// Hidden until the video is ready, then each element eases in on its own delay.
-const hidden = { opacity: 0, y: 24, filter: 'blur(8px)' }
-const shown = { opacity: 1, y: 0, filter: 'blur(0px)' }
-function step(delay: number) {
+// Hidden until the video has played its pre-roll, then each element eases in on its delay.
+const hidden = { opacity: 0, y: 28, filter: 'blur(8px)' }
+function step(delay: number, duration = 1) {
   return {
     initial: reduced.value ? false : hidden,
-    animate: started.value ? { ...shown, transition: { duration: 0.85, delay, ease } } : hidden,
+    animate: started.value
+      ? { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration, delay, ease } }
+      : hidden,
   }
 }
 </script>
@@ -38,8 +46,8 @@ function step(delay: number) {
     </div>
 
     <motion.div class="mx-auto w-full max-w-6xl px-6" :style="touch ? undefined : { y: copyY, opacity: copyOpacity }">
-      <motion.p class="text-eyebrow" v-bind="step(0.05)">
-        {{ organisation.name }} &middot; {{ organisation.tagline }}
+      <motion.p class="text-eyebrow" v-bind="step(0, 0.7)">
+        {{ organisation.tagline }}
       </motion.p>
 
       <h1 class="text-display mt-6 max-w-4xl text-5xl sm:text-7xl md:text-8xl [text-shadow:0_2px_30px_var(--shadow-ink)]">
@@ -47,16 +55,16 @@ function step(delay: number) {
           v-for="(word, i) in words" :key="word"
           class="mr-[0.22em] inline-block"
           :class="i === words.length - 1 ? 'text-aurora mr-0' : ''"
-          :initial="reduced ? false : { opacity: 0, y: 40, rotateX: -30, filter: 'blur(10px)' }"
-          :animate="started ? { opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)', transition: { duration: 0.9, delay: 0.15 + i * 0.09, ease } } : { opacity: 0, y: 40, rotateX: -30, filter: 'blur(10px)' }"
+          :initial="reduced ? false : { opacity: 0, y: 44, rotateX: -35, filter: 'blur(12px)' }"
+          :animate="started ? { opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)', transition: { duration: 1.05, delay: 0.35 + i * 0.16, ease } } : { opacity: 0, y: 44, rotateX: -35, filter: 'blur(12px)' }"
         >{{ word }}</motion.span>
       </h1>
 
-      <motion.p class="mt-7 max-w-2xl text-pretty text-lg text-muted-foreground sm:text-xl" v-bind="step(0.55)">
+      <motion.p class="mt-7 max-w-2xl text-pretty text-lg text-muted-foreground sm:text-xl" v-bind="step(1.35, 0.9)">
         {{ organisation.mission }}
       </motion.p>
 
-      <motion.div class="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center" v-bind="step(0.75)">
+      <motion.div class="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center" v-bind="step(1.75, 0.8)">
         <Button variant="default" size="xl" as="a" href="#projects">
           <i-hugeicons-mountain /> See our work
         </Button>
@@ -69,7 +77,7 @@ function step(delay: number) {
     <motion.a
       href="#projects" aria-label="Scroll to projects"
       class="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground sm:flex"
-      :initial="reduced ? false : { opacity: 0 }" :animate="started ? { opacity: 1, transition: { delay: 1.1, duration: 0.8 } } : { opacity: 0 }"
+      :initial="reduced ? false : { opacity: 0 }" :animate="started ? { opacity: 1, transition: { delay: 2.2, duration: 0.9 } } : { opacity: 0 }"
     >
       <span class="text-eyebrow">Scroll</span>
       <span class="relative block h-10 w-6 rounded-full ring-hair">

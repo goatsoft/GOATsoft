@@ -2,9 +2,9 @@
 /**
  * Full-bleed hero video, bundled per appearance (webm first, mp4 fallback). Autoplay
  * is muted and inline; the poster covers the first frame and any browser that refuses
- * autoplay. Reduced motion shows the poster only. Emits `ready` once playback has
- * started (or immediately under reduced motion, with a timeout safety net) so the
- * hero copy can animate in after the footage. @see ADR 0004, ADR 0010
+ * autoplay. Reduced motion shows the poster only. Emits `ready` once the footage is
+ * actually playing (or immediately under reduced motion, with a timeout safety net) so
+ * the hero copy can sequence in after it. @see ADR 0004, ADR 0010
  */
 import { heroVideoFor } from '@/presentation/assets/media.ts'
 
@@ -26,14 +26,13 @@ function fireReady() {
 }
 function onCanPlay() {
   ready.value = true
-  video.value?.play().catch(() => { /* Autoplay refused: the poster stays. */ })
-  fireReady()
+  video.value?.play().catch(() => fireReady()) // Autoplay refused: reveal the copy over the poster.
 }
 watch(appearance, () => (ready.value = false))
 onMounted(() => {
   if (reduced.value) fireReady()
   // Safety net: never leave the copy hidden if the video stalls or is blocked.
-  window.setTimeout(fireReady, 1600)
+  window.setTimeout(fireReady, 2500)
 })
 </script>
 
@@ -50,14 +49,17 @@ onMounted(() => {
       class="absolute inset-0 size-full object-cover transition-opacity duration-1000"
       :class="ready ? 'opacity-100' : 'opacity-0'"
       :poster="sources.poster"
-      autoplay muted loop playsinline disablepictureinpicture preload="metadata"
-      @canplay="onCanPlay"
+      autoplay muted playsinline disablepictureinpicture preload="metadata"
+      @canplay="onCanPlay" @playing="fireReady"
     >
       <source :src="sources.webm" type="video/webm" />
       <source :src="sources.mp4" type="video/mp4" />
     </video>
-    <!-- Veil: lifts the copy off the footage and blends the bottom edge into the page. -->
+    <!-- Copy-side scrim: the theme ground, strong on the left so the copy reads, clearing to the footage on the right. -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,color-mix(in_oklab,var(--goat-bg)_88%,transparent),color-mix(in_oklab,var(--goat-bg)_45%,transparent)_42%,transparent_72%)]" />
+    <!-- Gentle overall veil to unify the tone. -->
     <div class="absolute inset-0 bg-[var(--hero-veil)]" />
-    <div class="absolute inset-x-0 bottom-0 h-[45%] bg-[linear-gradient(to_bottom,transparent,var(--goat-bg))]" />
+    <!-- Bottom fade into the page (also backs the mobile copy). -->
+    <div class="absolute inset-x-0 bottom-0 h-[55%] bg-[linear-gradient(to_bottom,transparent,var(--goat-bg))]" />
   </div>
 </template>
