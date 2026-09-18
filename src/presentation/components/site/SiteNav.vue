@@ -39,7 +39,7 @@ const links = [
         </div>
 
         <div class="flex items-center gap-1.5">
-          <AppearanceToggle />
+          <AppearanceToggle class="hidden sm:inline-flex" />
           <Button variant="ghost" size="icon" as="a" :href="organisation.githubUrl" target="_blank" rel="noopener" aria-label="GOATsoft on GitHub" class="hidden md:inline-flex">
             <i-simple-icons-github />
           </Button>
@@ -66,6 +66,10 @@ const links = [
           class="flex min-h-12 touch-manipulation items-center rounded-xl px-4 py-3 text-base text-foreground focus-visible:outline-2 focus-visible:outline-ring active:glass-hover"
           @click="open = false"
         >{{ l.label }}</a>
+        <div class="flex items-center justify-between px-4 py-3">
+          <span class="text-sm text-muted-foreground">Appearance</span>
+          <AppearanceToggle labels />
+        </div>
       </nav>
     </div>
   </header>
