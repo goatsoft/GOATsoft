@@ -16,6 +16,7 @@ useAppearance()
           <ProjectsSection />
           <AboutSection />
           <OpenSourceSection />
+          <PrivacySection />
         </div>
       </main>
       <SiteFooter />
