@@ -31,12 +31,19 @@ export const CURATION: readonly ProjectCuration[] = [
     tagline: 'Native macOS hosts file manager',
     description: 'A modern native macOS /etc/hosts file manager, built with Swift and SwiftUI.',
   },
+  {
+    slug: 'OKLabColorPicker',
+    order: 3,
+    accent: 'green',
+    tagline: 'OKLab color picker for SwiftUI',
+    description: 'Perceptually uniform OKLab & OKLCH color picker component for SwiftUI across macOS, iOS, visionOS, and watchOS. Built-in color harmonies and WCAG contrast evaluation.',
+  },
   { slug: 'goatsoft.github.io', hidden: true },
   { slug: '.github', hidden: true },
 ]
 
 /** Only these repositories appear in the showcase, in this order. Everything else GitHub returns is ignored. */
-export const SHOWN: readonly string[] = ['GOAT', 'SwiftHosts']
+export const SHOWN: readonly string[] = ['GOAT', 'SwiftHosts', 'OKLabColorPicker']
 
 export const SNAPSHOT: readonly Project[] = [
   {
@@ -67,6 +74,15 @@ export const SNAPSHOT: readonly Project[] = [
     repoUrl: 'https://github.com/goatsoft/SwiftHosts',
     language: 'Swift',
     stars: 0,
+    topics: [],
+  },
+  {
+    slug: 'OKLabColorPicker',
+    name: 'OKLabColorPicker',
+    description: 'Perceptually uniform OKLab & OKLCH color picker component for SwiftUI across macOS, iOS, visionOS, and watchOS. Built-in color harmonies and WCAG contrast evaluation.',
+    repoUrl: 'https://github.com/goatsoft/OKLabColorPicker',
+    language: 'Swift',
+    stars: 1,
     topics: [],
   },
 ]
