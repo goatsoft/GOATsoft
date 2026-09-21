@@ -28,6 +28,12 @@ const updated = computed(() => {
 
 // The latest-release page; GitHub redirects it to the newest tag.
 const downloadUrl = computed(() => (props.project.download ? `${props.project.repoUrl}/releases/latest` : undefined))
+
+// The project's website, surfaced as a quiet link under the description. The footer
+// only promotes a homepage as a "Visit" button when there's no download, so this keeps
+// the live site one click away for download projects (e.g. GOAT to goatapp.dev).
+const homepageLink = computed(() => (props.project.download ? props.project.homepageUrl : undefined))
+const homepageLabel = computed(() => homepageLink.value?.replace(/^https?:\/\//, '').replace(/\/+$/, ''))
 </script>
 
 <template>
@@ -67,6 +73,17 @@ const downloadUrl = computed(() => (props.project.download ? `${props.project.re
       </div>
 
       <p class="mt-5 text-pretty text-muted-foreground" :class="featured ? 'text-base sm:text-lg' : 'text-sm'">{{ project.description }}</p>
+
+      <a
+        v-if="homepageLink"
+        :href="homepageLink"
+        target="_blank"
+        rel="noopener"
+        class="mt-3 inline-flex w-fit items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+      >
+        {{ homepageLabel }}
+        <Icon name="hugeicons:arrow-up-right-01" class="size-3.5" aria-hidden="true" />
+      </a>
 
       <ul v-if="project.topics.length" class="mt-4 flex flex-wrap gap-1.5" aria-label="Topics">
         <li v-for="t in project.topics.slice(0, 6)" :key="t" class="rounded-full px-2.5 py-0.5 font-mono text-[11px] text-muted-foreground ring-hair">{{ t }}</li>
