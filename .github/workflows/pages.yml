@@ -49,7 +49,7 @@ jobs:
             const deployment = await github.rest.repos.createDeployment({
               owner, repo,
               ref: context.sha,
-              environment: 'production',
+              environment: 'goatsoft.io',
               required_contexts: [],
               auto_merge: false,
               transient_environment: false,
