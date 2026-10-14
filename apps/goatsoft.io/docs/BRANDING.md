@@ -32,8 +32,9 @@ owns it afterwards and keeps it in sync with the system. See ADR 0003.
 - `shadow-ink`: soft shadow whose ink adapts to the appearance.
 - `text-aurora`: ink -> accent -> accent2 gradient text for the last word of a headline.
 - `text-brand`: cycling wordmark gradient.
-- Aurora canvases (`AuroraCanvas`) composite normally in both appearances; the light
-  palette is deeper so the same shader reads as a tint on white. No `mix-blend-mode`.
+- Aurora backgrounds (`AuroraBackdrop`, `.aurora` files) composite normally in both
+  appearances; the light files use the deeper ink ramp so they read as a tint on white. Blend
+  modes happen inside a background, never with `mix-blend-mode` on the page.
 
 ## Assets
 

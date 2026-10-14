@@ -15,7 +15,7 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": { "@/*": ["src/*"] },
-    "types": ["vite/client", "unplugin-icons/types/vue", "@webgpu/types"]
+    "types": ["vite/client", "unplugin-icons/types/vue", "@goatsoft/aurora-unplugin/client"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "vite.config.ts", "vitest.config.ts"],
   "exclude": ["dist", "node_modules"]

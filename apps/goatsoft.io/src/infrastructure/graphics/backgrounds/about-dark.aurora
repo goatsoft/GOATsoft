@@ -1,0 +1,51 @@
+{
+  "$schema": "https://aurora.goatsoft.io/schema/v1.json",
+  "format": "aurora",
+  "version": 1,
+  "name": "GOATsoft about (dark)",
+  "canvas": {
+    "fade": "y"
+  },
+  "palette": [
+    "color(srgb 0.86 0.88 0.93)",
+    "color(srgb 0.72 0.75 0.82)",
+    "color(srgb 0.96 0.97 1)"
+  ],
+  "layers": [
+    {
+      "type": "aurora-fbm",
+      "colors": [
+        0,
+        1,
+        2
+      ],
+      "mix": "srgb",
+      "params": {
+        "intensity": 0.22,
+        "scale": 0.9,
+        "speed": 0.05,
+        "seed": 11,
+        "stretch": 0.5
+      }
+    },
+    {
+      "type": "curtain",
+      "colors": [
+        2,
+        0,
+        1
+      ],
+      "blend": "screen",
+      "opacity": 0.35,
+      "params": {
+        "intensity": 0.7,
+        "base": 0.7,
+        "height": 0.5,
+        "wave": 0.45,
+        "rays": 0.55,
+        "rise": 0.15,
+        "speed": 0.06
+      }
+    }
+  ]
+}

@@ -18,6 +18,13 @@ export const CURATION: readonly ProjectCuration[] = [
     description: 'A native AI workspace for Mac. Connect local models to project files, tools and memory, with permissions you control.',
   },
   {
+    slug: 'aurora',
+    order: 2,
+    accent: 'indigo',
+    tagline: 'Animated backgrounds for the web',
+    description: 'WebGPU animated backgrounds with a CSS fallback: the .aurora format, a runtime for any framework, and Studio to design them. The backgrounds on this site are made with it.',
+  },
+  {
     slug: 'goatherd.dev',
     order: 2,
     accent: 'blue',
@@ -26,14 +33,14 @@ export const CURATION: readonly ProjectCuration[] = [
   },
   {
     slug: 'SwiftHosts',
-    order: 2,
+    order: 3,
     accent: 'indigo',
     tagline: 'Native macOS hosts file manager',
     description: 'A modern native macOS /etc/hosts file manager, built with Swift and SwiftUI.',
   },
   {
     slug: 'OKLabColorPicker',
-    order: 3,
+    order: 4,
     accent: 'green',
     tagline: 'OKLab color picker for SwiftUI',
     description: 'Perceptually uniform OKLab & OKLCH color picker component for SwiftUI across macOS, iOS, visionOS, and watchOS. Built-in color harmonies and WCAG contrast evaluation.',
@@ -43,7 +50,7 @@ export const CURATION: readonly ProjectCuration[] = [
 ]
 
 /** Only these repositories appear in the showcase, in this order. Everything else GitHub returns is ignored. */
-export const SHOWN: readonly string[] = ['GOAT', 'SwiftHosts', 'OKLabColorPicker']
+export const SHOWN: readonly string[] = ['GOAT', 'aurora', 'SwiftHosts', 'OKLabColorPicker']
 
 export const SNAPSHOT: readonly Project[] = [
   {
@@ -65,6 +72,16 @@ export const SNAPSHOT: readonly Project[] = [
     homepageUrl: 'https://goatherd.dev/',
     language: 'HTML',
     stars: 0,
+    topics: [],
+  },
+  {
+    slug: 'aurora',
+    name: 'aurora',
+    description: 'WebGPU animated backgrounds with CSS fallback. .aurora format, runtime and Studio, authored in OKLab.',
+    repoUrl: 'https://github.com/goatsoft/aurora',
+    homepageUrl: 'https://aurora.goatsoft.io/',
+    language: 'TypeScript',
+    stars: 1,
     topics: [],
   },
   {

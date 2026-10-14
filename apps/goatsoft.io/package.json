@@ -17,6 +17,8 @@
     "check": "npm run build && npm run test && npm run lint:prose"
   },
   "dependencies": {
+    "@goatsoft/aurora": "^0.2.0",
+    "@goatsoft/aurora-vue": "^0.2.0",
     "@regle/schemas": "^1.29.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -26,12 +28,12 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@goatsoft/aurora-unplugin": "^0.2.0",
     "@iconify-json/hugeicons": "^1.2.35",
     "@iconify-json/simple-icons": "^1.2.96",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.6.1",
     "@vitejs/plugin-vue": "^6.0.9",
-    "@webgpu/types": "^0.1.72",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
     "unplugin-auto-import": "^21.1.0",

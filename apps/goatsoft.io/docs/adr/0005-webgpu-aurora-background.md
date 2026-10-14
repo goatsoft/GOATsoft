@@ -1,6 +1,6 @@
 # 0005. WebGPU aurora background with WebGL2 and CSS fallbacks
 
-- Status: accepted
+- Status: superseded by [0014](./0014-backgrounds-on-goatsoft-aurora.md)
 - Date: 2026-09-18
 
 ## Context

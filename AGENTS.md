@@ -60,9 +60,11 @@ domain ports. [ADR 0002]
   via component auto-import; shared presets live in `src/application/useMotionPresets.ts`;
   gate on `useReducedMotion()` and on touch input for scroll-linked effects. CSS keyframes
   are registered in `@theme` and stop under `prefers-reduced-motion`. [ADR 0007]
-- **Graphics:** the aurora background is WebGPU first, WebGL2 second, CSS last, drawn only
-  while visible and at most 30 fps. New GPU work goes in `src/infrastructure/graphics` and is
-  wrapped by a presentational component in `src/presentation/components/fx`. [ADR 0005]
+- **Graphics:** backgrounds are `@goatsoft/aurora` `.aurora` files in
+  `src/infrastructure/graphics/backgrounds` (one per place and appearance, monochrome ramps),
+  mapped in `backgrounds.ts` and rendered only through `fx/AuroraBackdrop.vue`. Edit them in
+  Aurora Studio; do not write shaders in the site. Warm new first-screen backgrounds up in
+  `main.ts`. [ADR 0014]
 - **Forms:** validation rules are Zod schemas in the domain (`src/domain/<context>`), bound in
   the application layer with Regle (`useRegleSchema` from `@regle/schemas`). Components render
   `r$.<field>.$errors`, gate display on `$error`, and set `novalidate` so the schema is the
