@@ -13,9 +13,9 @@ Rules for working in the repo are in [`AGENTS.md`](./AGENTS.md). Decisions are r
 ## Stack
 
 Vue 3.5 and Vite 8 with TypeScript, Tailwind CSS v4, motion-v for animation, unplugin
-auto-imports for composables and components, unplugin-icons (Hugeicons, Simple Icons), a
-WebGPU aurora renderer with WebGL2 and CSS fallbacks, and Vitest. Static output deploys to
-GitHub Pages. No runtime dependencies beyond the GitHub REST API, which has a static fallback. Typography uses the Apple system font stack, so Apple devices render real SF Pro, with a self-hosted Inter (SIL OFL) fallback for everyone else and no third-party font requests.
+auto-imports for composables and components, unplugin-icons (Hugeicons, Simple Icons),
+[Aurora](https://aurora.goatsoft.io/) backgrounds (WebGPU with CSS fallbacks), and Vitest. Static output deploys to
+GitHub Pages. No runtime requests beyond the GitHub REST API, which has a static fallback, and the Powered by Aurora badge image from aurora.goatsoft.io. Typography uses the Apple system font stack, so Apple devices render real SF Pro, with a self-hosted Inter (SIL OFL) fallback for everyone else and no third-party font requests.
 
 ## Local development
 
@@ -73,7 +73,7 @@ framework.
 | Logo (inlined, currentColor) | `src/presentation/assets/svg/GOATsoft.svg` |
 | Hero video (webm + mp4, per appearance) | `src/presentation/assets/video/*`; mapped in `src/presentation/assets/media.ts` |
 | Colours (monochrome tokens), type roles, glass, keyframes | `src/presentation/assets/css/main.css` |
-| Aurora palettes (white mist / dark clouds) | `PALETTES` in `src/infrastructure/graphics/aurora-shaders.ts` |
+| Backgrounds (one `.aurora` file per place and appearance; open in Aurora Studio) | `src/infrastructure/graphics/backgrounds/*` |
 | Section layout and animation | `src/presentation/components/section/*` |
 
 ### Replacing the assets

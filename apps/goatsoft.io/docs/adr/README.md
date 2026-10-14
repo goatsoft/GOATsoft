@@ -10,7 +10,7 @@ immutable once accepted; supersede them with a new record instead of editing. Us
 | [0002](./0002-domain-driven-layering.md) | Domain-driven layering in a static site | accepted |
 | [0003](./0003-system-appearance-with-override.md) | Light and dark appearances follow the system, with a stored override | accepted |
 | [0004](./0004-video-hero-per-appearance.md) | Video hero with one edit per appearance | accepted |
-| [0005](./0005-webgpu-aurora-background.md) | WebGPU aurora background with WebGL2 and CSS fallbacks | accepted |
+| [0005](./0005-webgpu-aurora-background.md) | WebGPU aurora background with WebGL2 and CSS fallbacks | superseded by 0014 |
 | [0006](./0006-projects-from-github-with-static-fallback.md) | Showcase from the GitHub API with a curated static fallback | accepted |
 | [0007](./0007-motion-v-and-reduced-motion.md) | motion-v for animation, gated on reduced motion and touch | accepted |
 | [0008](./0008-github-pages-deployment.md) | GitHub Pages deployment from Actions | superseded by 0012 |
@@ -19,3 +19,4 @@ immutable once accepted; supersede them with a new record instead of editing. Us
 | [0011](./0011-contact-form-validation-zod-regle.md) | Contact form validation with Zod and Regle | accepted |
 | [0012](./0012-publish-to-dedicated-pages-repo.md) | Publish the built site to a dedicated Pages repo | accepted |
 | [0013](./0013-showcase-repository-allowlist.md) | Showcase shows an explicit repository allowlist | accepted |
+| [0014](./0014-backgrounds-on-goatsoft-aurora.md) | Backgrounds on @goatsoft/aurora | accepted |

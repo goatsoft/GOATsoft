@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { organisation, year } = useBrand()
+import { AuroraBadge } from '@goatsoft/aurora-vue/badge'
+const { organisation, year, appearance } = useBrand()
 </script>
 
 <template>
@@ -32,7 +33,11 @@ const { organisation, year } = useBrand()
     </div>
     <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-3 border-t border-border/60 px-6 py-6 text-xs text-muted-foreground/70 md:flex-row md:items-center">
       <span>&copy; {{ year }} {{ organisation.name }}. Code is released under the licence in each repository.</span>
-      <span>Not affiliated with Apple. macOS is a trademark of Apple Inc.</span>
+      <div class="flex flex-col items-start gap-3 md:flex-row md:items-center md:gap-5">
+        <span>Not affiliated with Apple. macOS is a trademark of Apple Inc.</span>
+        <!-- Backgrounds by Aurora; the badge matches the page's appearance, not just the system's. -->
+        <AuroraBadge label="powered-by" :theme="appearance" target="_blank" rel="noopener" class="shrink-0 rounded-md" />
+      </div>
     </div>
   </footer>
 </template>

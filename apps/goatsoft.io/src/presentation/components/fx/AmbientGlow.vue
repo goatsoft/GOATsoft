@@ -1,10 +1,12 @@
 <script setup lang="ts">
 /**
- * Page background: one GPU aurora pinned to the viewport, following scroll at a
- * quarter of the page speed. Sits behind everything; the hero paints over it.
+ * Page background: one Aurora pinned to the viewport, following scroll at a fraction of
+ * the page speed. Sits behind everything; the hero paints over it. @see ADR 0014
  */
 </script>
 
 <template>
-  <AuroraCanvas fixed hue="aurora" :intensity="0.16" :scale="1.0" :speed="0.04" :parallax="0.22" class="-z-10" />
+  <div class="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+    <AuroraBackdrop name="ambient" />
+  </div>
 </template>

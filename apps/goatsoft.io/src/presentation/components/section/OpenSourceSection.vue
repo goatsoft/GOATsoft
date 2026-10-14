@@ -14,7 +14,7 @@ const doors = [
     <div class="mx-auto max-w-6xl px-6">
       <motion.div class="glass relative overflow-hidden rounded-3xl p-8 shadow-ink sm:p-14" v-bind="reveal()">
         <div class="pointer-events-none absolute inset-0 -z-10 opacity-80" aria-hidden="true">
-          <AuroraCanvas hue="violet" :intensity="0.22" :scale="1.4" :speed="0.07" :seed="7" :stretch="0.6" :sweep="0.6" />
+          <AuroraBackdrop name="open-source" />
         </div>
 
         <div class="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr]">

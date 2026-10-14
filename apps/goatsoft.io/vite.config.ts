@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import aurora from '@goatsoft/aurora-unplugin/vite'
 import tailwindcss from '@tailwindcss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -19,6 +20,8 @@ export default defineConfig(({ mode }) => {
     base: env.VITE_BASE || '/',
     plugins: [
       vue(),
+      // Validates every .aurora import at build time and inlines its CSS fallback. @see ADR 0014
+      aurora(),
       tailwindcss(),
       AutoImport({
         imports: ['vue', { 'motion-v': ['useScroll', 'useTransform', 'useSpring', 'useMotionValue', 'useInView', 'useReducedMotion'] }],
